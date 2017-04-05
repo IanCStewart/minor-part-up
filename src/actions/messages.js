@@ -1,21 +1,9 @@
-import { MESSAGE_SEND, TYPING_SHOW, TYPING_HIDE } from './types';
+import { MESSAGE_SEND } from './types';
 
-export function messageSend(payload) {
+export default function messageSend(payload) {
   return {
     type: MESSAGE_SEND,
     payload,
     server: true
-  };
-}
-
-export function typingShow() {
-  return {
-    type: TYPING_SHOW
-  };
-}
-
-export function typingHide() {
-  return {
-    type: TYPING_HIDE
   };
 }

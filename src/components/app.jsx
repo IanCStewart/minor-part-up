@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { MessageList, Message, MessageInput } from 'anchor-ui';
 import Loader from 'anchor-ui/loader';
 import uuid from 'uuid';
-import { messageSend, typingShow, typingHide } from '../actions/messages';
+import messageSend from '../actions/messages';
 import avatar from '../assets/images/avatar.jpg';
-import sendMessage from '../send-message';
 import '../app.css';
 
 class App extends Component {
@@ -52,8 +51,6 @@ class App extends Component {
       createdAt: new Date(),
       id: uuid.v4()
     });
-
-    sendMessage(message);
 
     this.messageList.scrollDown();
 
@@ -138,4 +135,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { messageSend, typingShow, typingHide })(App);
+export default connect(mapStateToProps, { messageSend })(App);
