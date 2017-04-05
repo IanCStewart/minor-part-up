@@ -1,4 +1,4 @@
-import { MESSAGE_SEND, TYPING_SHOW, TYPING_HIDE } from '../actions/types';
+import { MESSAGE_SEND, MESSAGE_RECEIVE, TYPING_SHOW, TYPING_HIDE } from '../actions/types';
 
 const INITIAL_STATE = {
   data: [],
@@ -23,6 +23,12 @@ export default function (state = INITIAL_STATE, action) {
       return {
         ...state,
         typing: false
+      };
+    }
+    case MESSAGE_RECEIVE: {
+      return {
+        ...state,
+        data: [...state.data, action.payload]
       };
     }
     default: return state;

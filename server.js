@@ -16,7 +16,10 @@ io.on('connection', (socket) => {
   socket.on('action', (action) => {
     switch (action.type) {
       case 'MESSAGE_SEND':
-        io.emit('MESSAGE_SEND', action.payload);
+        io.emit('action', {
+          type: 'MESSAGE_RECEIVE',
+          payload: action.payload
+        });
         console.log(action.payload); // eslint-disable-line no-console
         break;
       default:
