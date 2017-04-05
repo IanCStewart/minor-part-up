@@ -1,0 +1,33 @@
+{
+  "name": "minor-part-up",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "buildbranch": "^1.0.0",
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.9.0",
+    "react-scripts": "0.8.5"
+  },
+  "dependencies": {
+    "anchor-ui": "^2.0.7",
+    "chance": "^1.0.4",
+    "classnames": "^2.2.5",
+    "color": "^1.0.3",
+    "moment": "^2.17.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-jss": "^5.3.0",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0",
+    "uuid": "^3.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
