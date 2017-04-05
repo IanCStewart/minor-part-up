@@ -6,7 +6,7 @@ import { messageSend, typingShow, typingHide } from './actions/messages';
 
 const chance = new Chance();
 
-function sendBeefBotMessage() {
+function sendClientMessage() {
   const quote = chance.pickone(lines.quotes);
   const username = chance.pickone(['Guest1', 'Guest2', 'Guest3', 'Guest4']);
 
@@ -26,4 +26,4 @@ function sendBeefBotMessage() {
   }, 500);
 }
 
-export default sendBeefBotMessage;
+export default sendClientMessage;
