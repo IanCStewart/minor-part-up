@@ -3,6 +3,7 @@
 
 ## The App
 ![Demo gif](./demo.gif)
+
 This app is a demo of the possibilities with Redux and React. I have rebuilt the activity tab comment section for this component rebuild demo. The components came from a MeteorJS base.
 
 ### Concept
@@ -12,8 +13,10 @@ Advice demo to show that the app could also be built on other principles.
 I have built the front-end on react.
 > A JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES ~[FaceBook](https://facebook.github.io/react/)
 
+
 I am saving the comments in a Redux store
 > Redux is a predictable state container for JavaScript apps. [redux.js](http://redux.js.org/#)
+
 
 I used socket.io to connect the different clients
 > Socket.IO enables real-time bidirectional event-based communication. [socket.io](https://socket.io/)
