@@ -4,7 +4,7 @@ import { MessageList, Message, MessageInput } from 'anchor-ui';
 import Loader from 'anchor-ui/loader';
 import uuid from 'uuid';
 import { messageSend, typingShow, typingHide } from '../actions/messages';
-import chatBot from '../assets/images/chat-bot.jpg';
+import avatar from '../assets/images/avatar.jpg';
 import sendMessage from '../send-message';
 import '../app.css';
 
@@ -87,7 +87,7 @@ class App extends Component {
         borderRadius: '10%',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundImage: `url(${chatBot})`,
+        backgroundImage: `url(${avatar})`,
         float: 'left',
         marginRight: '10px'
       },
