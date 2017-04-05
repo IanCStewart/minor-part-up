@@ -89,7 +89,7 @@ class App extends Component {
     };
 
     return (
-      <WithTheme color="orange">
+      <WithTheme color="#ff9901">
         <main className="app">
           <article className="activity-body" style={style.background}>
             <h1 style={style.header}>Activity Name</h1>
