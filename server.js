@@ -12,7 +12,6 @@ const server = app.listen(port, host, () => {
 const io = new SocketIo(server);
 
 io.on('connection', (socket) => {
-  console.log('aweyis a connect'); // eslint-disable-line no-console
   socket.on('action', (action) => {
     switch (action.type) {
       case 'MESSAGE_SEND':
@@ -20,10 +19,8 @@ io.on('connection', (socket) => {
           type: 'MESSAGE_RECEIVE',
           payload: action.payload
         });
-        console.log(action.payload); // eslint-disable-line no-console
         break;
-      default:
-        console.log(action); // eslint-disable-line no-console
+      default: console.log('unknown action', action.type); // eslint-disable-line no-console
     }
   });
 });
