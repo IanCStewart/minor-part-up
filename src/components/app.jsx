@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { MessageList, Message, MessageInput } from 'anchor-ui';
+import MessageList from 'anchor-ui/message-list';
+import Message from 'anchor-ui/message';
+import MessageInput from 'anchor-ui/message-input';
 import uuid from 'uuid';
 import Chance from 'chance';
 import messageSend from '../actions/messages';
