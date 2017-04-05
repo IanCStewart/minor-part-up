@@ -3,7 +3,8 @@ import { MESSAGE_SEND, TYPING_SHOW, TYPING_HIDE } from './types';
 export function messageSend(payload) {
   return {
     type: MESSAGE_SEND,
-    payload
+    payload,
+    server: true
   };
 }
 
