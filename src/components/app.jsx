@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { MessageList, Message, MessageInput } from 'anchor-ui';
 import uuid from 'uuid';
+import Chance from 'chance';
 import messageSend from '../actions/messages';
 import avatar from '../assets/images/avatar.jpg';
 import '../app.css';
@@ -38,6 +39,8 @@ class App extends Component {
 
   handleMessageSend() {
     const { message } = this.state;
+    const chance = new Chance();
+    const username = chance.pickone(['Guest1', 'Guest2', 'Guest3', 'Guest4']);
 
     if (!message) {
       return false;
@@ -45,7 +48,7 @@ class App extends Component {
 
     this.props.messageSend({
       body: message,
-      username: 'MainUser',
+      username,
       createdAt: new Date(),
       id: uuid.v4()
     });
