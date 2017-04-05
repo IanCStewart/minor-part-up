@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
-    "buildbranch": "^1.0.0",
     "eslint": "^3.15.0",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-import": "^2.2.0",
@@ -13,16 +12,12 @@
     "react-scripts": "0.8.5"
   },
   "dependencies": {
-    "anchor-ui": "^2.0.7",
+    "anchor-ui": "^2.8.10",
     "chance": "^1.0.4",
-    "classnames": "^2.2.5",
-    "color": "^1.0.3",
     "express": "^4.15.2",
     "lodash": "^4.17.4",
-    "moment": "^2.17.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-jss": "^5.3.0",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
