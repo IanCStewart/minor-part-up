@@ -22,19 +22,6 @@ class App extends Component {
 
     this.handleMessageSend = this.handleMessageSend.bind(this);
     this.handleMessageChange = this.handleMessageChange.bind(this);
-    this.scrollDown = this.scrollDown.bind(this);
-  }
-
-  componentDidUpdate() {
-    this.scrollDown();
-  }
-
-  scrollDown() {
-    setTimeout(() => {
-      if (this.messagesContainer) {
-        this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
-      }
-    }, 100);
   }
 
   handleMessageSend() {
