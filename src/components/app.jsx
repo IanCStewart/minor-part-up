@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { MessageList, Message, MessageInput } from 'anchor-ui';
-import Loader from 'anchor-ui/loader';
 import uuid from 'uuid';
 import messageSend from '../actions/messages';
 import avatar from '../assets/images/avatar.jpg';
@@ -10,8 +9,7 @@ import '../app.css';
 class App extends Component {
   static propTypes = {
     messageSend: PropTypes.func.isRequired,
-    messages: PropTypes.arrayOf(Object).isRequired,
-    typing: PropTypes.bool.isRequired
+    messages: PropTypes.arrayOf(Object).isRequired
   }
 
   constructor() {
@@ -66,7 +64,7 @@ class App extends Component {
   }
 
   render() {
-    const { messages, typing } = this.props;
+    const { messages } = this.props;
 
     const style = {
       background: {
@@ -113,7 +111,6 @@ class App extends Component {
               </section>
             ))}
           </MessageList>
-          {typing ? <div className="loader"><Loader dotStyle={{ backgroundColor: '#eee' }} /></div> : null}
           <MessageInput
             onChange={this.handleMessageChange}
             placeholder="Write a comment..."
@@ -130,8 +127,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    messages: state.messages.data,
-    typing: state.messages.typing
+    messages: state.messages.data
   };
 }
 
