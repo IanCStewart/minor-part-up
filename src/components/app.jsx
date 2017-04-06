@@ -1,18 +1,19 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { MessageList, Message, MessageInput } from 'anchor-ui';
-import Loader from 'anchor-ui/loader';
+import MessageList from 'anchor-ui/message-list';
+import Message from 'anchor-ui/message';
+import MessageInput from 'anchor-ui/message-input';
+import WithTheme from 'anchor-ui/with-theme';
 import uuid from 'uuid';
-import { messageSend, typingShow, typingHide } from '../actions/messages';
-import chatBot from '../assets/images/chat-bot.jpg';
-import sendMessage from '../send-message';
+import Chance from 'chance';
+import messageSend from '../actions/messages';
+import avatar from '../assets/images/avatar.jpg';
 import '../app.css';
 
 class App extends Component {
   static propTypes = {
     messageSend: PropTypes.func.isRequired,
-    messages: PropTypes.arrayOf(Object).isRequired,
-    typing: PropTypes.bool.isRequired
+    messages: PropTypes.arrayOf(Object).isRequired
   }
 
   constructor() {
@@ -24,23 +25,12 @@ class App extends Component {
 
     this.handleMessageSend = this.handleMessageSend.bind(this);
     this.handleMessageChange = this.handleMessageChange.bind(this);
-    this.scrollDown = this.scrollDown.bind(this);
-  }
-
-  componentDidUpdate() {
-    this.scrollDown();
-  }
-
-  scrollDown() {
-    setTimeout(() => {
-      if (this.messagesContainer) {
-        this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
-      }
-    }, 100);
   }
 
   handleMessageSend() {
     const { message } = this.state;
+    const chance = new Chance();
+    const username = chance.pickone(['Guest1', 'Guest2', 'Guest3', 'Guest4']);
 
     if (!message) {
       return false;
@@ -48,12 +38,10 @@ class App extends Component {
 
     this.props.messageSend({
       body: message,
-      username: 'MainUser',
+      username,
       createdAt: new Date(),
       id: uuid.v4()
     });
-
-    sendMessage(message);
 
     this.messageList.scrollDown();
 
@@ -69,7 +57,7 @@ class App extends Component {
   }
 
   render() {
-    const { messages, typing } = this.props;
+    const { messages } = this.props;
 
     const style = {
       background: {
@@ -87,7 +75,7 @@ class App extends Component {
         borderRadius: '10%',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundImage: `url(${chatBot})`,
+        backgroundImage: `url(${avatar})`,
         float: 'left',
         marginRight: '10px'
       },
@@ -101,41 +89,41 @@ class App extends Component {
     };
 
     return (
-      <main className="app">
-        <article className="activity-body" style={style.background}>
-          <h1 style={style.header}>Activity Name</h1>
-          <MessageList style={{ height: 'calc(100% - 149px)' }} addRef={ref => (this.messageList = ref)} autoScroll>
-            {messages.map(message => (
-              <section key={message.id}>
-                <div style={style.avatar} />
-                <Message
-                  message={message} key={`message-${message.id}`}
-                  compact
-                  style={{ maxWidth: 'calc(100% - 50px)' }}
-                />
-              </section>
-            ))}
-          </MessageList>
-          {typing ? <div className="loader"><Loader dotStyle={{ backgroundColor: '#eee' }} /></div> : null}
-          <MessageInput
-            onChange={this.handleMessageChange}
-            placeholder="Write a comment..."
-            value={this.state.message}
-            sendMessage={this.handleMessageSend}
-            style={style.inputRoot}
-            inputStyle={style.input}
-          />
-        </article>
-      </main>
+      <WithTheme color="#ff9901">
+        <main className="app">
+          <article className="activity-body" style={style.background}>
+            <h1 style={style.header}>Activity Name</h1>
+            <MessageList style={{ height: 'calc(100% - 149px)' }} addRef={ref => (this.messageList = ref)} autoScroll>
+              {messages.map(message => (
+                <section key={message.id}>
+                  <div style={style.avatar} />
+                  <Message
+                    message={message} key={`message-${message.id}`}
+                    compact
+                    style={{ maxWidth: 'calc(100% - 50px)' }}
+                  />
+                </section>
+              ))}
+            </MessageList>
+            <MessageInput
+              onChange={this.handleMessageChange}
+              placeholder="Write a comment..."
+              value={this.state.message}
+              sendMessage={this.handleMessageSend}
+              style={style.inputRoot}
+              inputStyle={style.input}
+            />
+          </article>
+        </main>
+      </WithTheme>
     );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    messages: state.messages.data,
-    typing: state.messages.typing
+    messages: state.messages.data
   };
 }
 
-export default connect(mapStateToProps, { messageSend, typingShow, typingHide })(App);
+export default connect(mapStateToProps, { messageSend })(App);
