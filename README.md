@@ -52,5 +52,6 @@ $ npm start
 - [facebook/react](https://facebook.github.io/react/)
 - [redux.js](http://redux.js.org/#)
 - [socket.io](https://socket.io/)
+- [anchor-ui](https://github.com/anchorchat/anchor-ui)
 - [reduxMiddleWare snippet from @rijkvanzanten](https://gist.github.com/rijkvanzanten/e1f3c04635495f57aa27bfec6ee4be21)
 - [helpful advice from @sjaakluthart](https://github.com/sjaakluthart)
